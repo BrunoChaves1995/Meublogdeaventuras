@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lógica Básica JS: Decisões e Loopings</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #007bff;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #28a745;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #6f42c1;
+            margin-top: 20px;
+        }
+        .output-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: 8px;
+        }
+        .destaque {
+            font-weight: bold;
+            color: #dc3545; 
+        }
+        input {
+            padding: 6px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lógica Básica com JavaScript: Estruturas de Decisão e Loopings</h1>
+    <p>Digite os valores abaixo e clique em <b>Executar</b> para ver o resultado:</p>
+
+    <div>
+        <label>Informe sua idade:</label>
+        <input type="number" id="idadeInput" placeholder="Ex: 25">
+        <br>
+        <label>Informe sua nota:</label>
+        <input type="number" id="notaInput" placeholder="Ex: 80">
+        <br>
+        <label>Até quanto o loop deve contar?</label>
+        <input type="number" id="loopInput" placeholder="Ex: 5">
+        <br>
+        <button onclick="executarLogica()">Executar</button>
+    </div>
+
+    <div class="output-box">
+        <div id="resultado-decisao"></div>
+        <hr> 
+        <div id="resultado-loopings"></div>
+    </div>
+
+    <script>
+        function executarLogica() {
+            // PEGANDO OS VALORES DOS INPUTS
+            let idade = Number(document.getElementById("idadeInput").value);
+            let nota = Number(document.getElementById("notaInput").value);
+            let limiteLoop = Number(document.getElementById("loopInput").value);
+
+            // Validação simples
+            if (isNaN(idade) || isNaN(nota) || isNaN(limiteLoop)) {
+                alert("Por favor, preencha todos os campos numéricos!");
+                return;
+            }
+
+            // --- DECISÕES ---
+            let mensagemDecisao = "<h2>Estruturas de Decisão</h2>";
+            mensagemDecisao += "<p>Variável <span class='destaque'>idade</span> definida como: " + idade + "</p>";
+
+            if (idade < 18) {
+                mensagemDecisao += "<p>Você é menor de idade.</p>";
+                console.log("Decisão: Menor de idade.");
+            } else if (idade >= 18 && idade < 60) {
+                mensagemDecisao += "<p>Você é um adulto.</p>";
+                console.log("Decisão: Adulto.");
+            } else {
+                mensagemDecisao += "<p>Você é um idoso.</p>";
+                console.log("Decisão: Idoso.");
+            }
+
+            mensagemDecisao += "<h3>Exemplo de Notas</h3>";
+            mensagemDecisao += "<p>Variável <span class='destaque'>nota</span> definida como: " + nota + "</p>";
+
+            if (nota >= 90) {
+                mensagemDecisao += "<p>Sua avaliação é: A (Excelente!)</p>";
+                console.log("Decisão Notas: A");
+            } else if (nota >= 70) {
+                mensagemDecisao += "<p>Sua avaliação é: B (Muito Bom!)</p>";
+                console.log("Decisão Notas: B");
+            } else if (nota >= 50) {
+                mensagemDecisao += "<p>Sua avaliação é: C (Aprovado, mas pode melhorar.)</p>";
+                console.log("Decisão Notas: C");
+            } else {
+                mensagemDecisao += "<p>Sua avaliação é: D (Reprovado. Precisa estudar mais.)</p>";
+                console.log("Decisão Notas: D");
+            }
+
+            document.getElementById('resultado-decisao').innerHTML = mensagemDecisao;
+
+            // --- LOOPINGS ---
+            let mensagemLoopings = "<h2>Loopings (Repetições)</h2>";
+
+            mensagemLoopings += "<h3>Loop FOR: Contando de 0 até " + (limiteLoop - 1) + "</h3>";
+            console.log("\n--- Início do Loop FOR ---");
+            for (let i = 0; i < limiteLoop; i++) {
+                mensagemLoopings += `<p>Contador do FOR: <span class='destaque'>${i}</span></p>`;
+                console.log("Loop FOR - i: " + i);
+            }
+            console.log("--- Fim do Loop FOR ---");
+
+            mensagemLoopings += "<h3>Loop WHILE: Contando de 0 a 2</h3>";
+            let contadorWhile = 0;
+            console.log("\n--- Início do Loop WHILE ---");
+            while (contadorWhile < 3) {
+                mensagemLoopings += `<p>Contador do WHILE: <span class='destaque'>${contadorWhile}</span></p>`;
+                console.log("Loop WHILE - contadorWhile: " + contadorWhile);
+                contadorWhile++;
+            }
+            console.log("--- Fim do Loop WHILE ---");
+
+            document.getElementById('resultado-loopings').innerHTML = mensagemLoopings;
+        }
+    </script>
+</body>
+</html>
