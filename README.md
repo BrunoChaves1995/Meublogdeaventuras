@@ -1,2 +1,2 @@
 # Meublogdeaventuras
-Esse é um website pessoal criado para trabalho da faculdade. 
+Esse é um website pessoal criado para trabalho da faculdade e aprimoramento de habilidades. 
